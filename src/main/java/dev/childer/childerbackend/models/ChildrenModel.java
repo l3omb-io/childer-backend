@@ -1,4 +1,4 @@
-package dev.childer.childerbackend.model;
+package dev.childer.childerbackend.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -17,32 +17,32 @@ public class ChildrenModel implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "ImagePath",nullable = false)
+    @Column(name = "ImagePath", nullable = false)
     private String imagePath;
 
-    @Column(name = "Fname",nullable = false)
+    @Column(name = "Fname", nullable = false)
     private String fname;
 
-    @Column(name = "Lname",nullable = false)
+    @Column(name = "Lname", nullable = false)
     private String lname;
 
-    @Column(name = "Nickname",nullable = false)
+    @Column(name = "Nickname", nullable = false)
     private String nickName;
 
-    @Column(name = "IDcard",length = 13,nullable = false)
+    @Column(name = "IDcard", length = 13, nullable = false)
     private String idCard;
 
-    @Column(name = "BOD",nullable = false)
+    @Column(name = "BOD", nullable = false)
     private Date bod;
 
-    @Column(name = "Parentname",nullable = false)
+    @Column(name = "Parentname", nullable = false)
     private String parentName;
 
-    @Column(name = "Grade",nullable = false)
+    @Column(name = "Grade", nullable = false)
     private String grade;
 
-    @Column(name = "Phone",nullable = false)
-    private String phone;
+    @Column(name = "Tel", nullable = false, length = 10)
+    private String tel;
 
 
 }
