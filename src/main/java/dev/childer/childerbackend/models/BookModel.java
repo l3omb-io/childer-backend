@@ -1,5 +1,8 @@
 package dev.childer.childerbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +13,8 @@ import java.io.Serializable;
 @Table(name = "Book")
 @Data
 @NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class BookModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,4 +33,6 @@ public class BookModel implements Serializable {
     @Column(name = "SchoolYear")
     private int schoolYear;
 
+    @OneToOne(mappedBy = "book")
+    private ChildrenModel children;
 }
