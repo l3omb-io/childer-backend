@@ -49,11 +49,11 @@ public class ChildrenModel implements Serializable {
     @Column(name = "Tel", nullable = false, length = 10)
     private String tel;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(
             name = "IdentityBook",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "id")
+            joinColumns = @JoinColumn(name = "children_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id")
     )
     private BookModel book;
 }

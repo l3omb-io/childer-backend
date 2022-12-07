@@ -33,6 +33,6 @@ public class BookModel implements Serializable {
     @Column(name = "SchoolYear")
     private int schoolYear;
 
-    @OneToOne(mappedBy = "book")
+    @OneToOne(mappedBy = "book",cascade = CascadeType.ALL)
     private ChildrenModel children;
 }

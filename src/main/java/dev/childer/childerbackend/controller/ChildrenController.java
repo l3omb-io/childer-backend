@@ -28,7 +28,7 @@ public class ChildrenController {
     }
 
     @GetMapping("/{id}")
-    public @ResponseBody ResponseEntity<ChildrenModel> getOneChildren(@PathVariable Long id){
+    public @ResponseBody ResponseEntity <Optional<ChildrenModel>> getOneChildren(@PathVariable Long id){
         return new ResponseEntity<>(this.childrenService.findChildrenByID(id),HttpStatus.OK);
     }
 
@@ -38,7 +38,7 @@ public class ChildrenController {
     }
 
     @PutMapping("/{id}")
-    public @ResponseBody ResponseEntity<ChildrenModel> putChildren(@PathVariable Long id,@RequestBody ChildrenModel children){
+    public @ResponseBody ResponseEntity<Optional<ChildrenModel>> putChildren(@PathVariable Long id,@RequestBody ChildrenModel children){
         return new ResponseEntity<>(this.childrenService.updateChildren(id,children),HttpStatus.OK);
     }
 

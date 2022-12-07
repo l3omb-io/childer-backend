@@ -5,6 +5,8 @@ import dev.childer.childerbackend.repositories.ChildrenRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ChildrenService {
 
@@ -20,30 +22,29 @@ public class ChildrenService {
         return this.childrenRepository.findAll();
     }
 
-    public ChildrenModel findChildrenByID(Long id){
-        return this.childrenRepository.getReferenceById(id);
+    public Optional<ChildrenModel> findChildrenByID(Long id){
+        return this.childrenRepository.findById(id);
     }
 
     public ChildrenModel saveChildren(ChildrenModel children){
         return this.childrenRepository.save(children);
     }
 
-    public ChildrenModel updateChildren(Long id , ChildrenModel children){
-        ChildrenModel c = findChildrenByID(id);
+    public Optional<ChildrenModel> updateChildren(Long id , ChildrenModel newChildren){
+        return childrenRepository.findById(id).map(children -> {
+            children.setFname(newChildren.getFname());
+            children.setLname(newChildren.getLname());
+            children.setBod(newChildren.getBod());
+            children.setGrade(newChildren.getGrade());
+            children.setIdCard(newChildren.getIdCard());
+            children.setTel(newChildren.getTel());
+            children.setImagePath(newChildren.getImagePath());
+            children.setParentName(newChildren.getParentName());
+            children.setBook(newChildren.getBook());
+            children.setNickName(newChildren.getNickName());
+            return childrenRepository.save(children);
+        });
 
-        c.setFname(children.getFname());
-        c.setLname(children.getLname());
-        c.setBod(children.getBod());
-        c.setGrade(children.getGrade());
-        c.setIdCard(children.getIdCard());
-        c.setTel(children.getTel());
-        c.setImagePath(children.getImagePath());
-        c.setParentName(children.getParentName());
-        c.setBook(children.getBook());
-        c.setNickName(children.getNickName());
-
-        childrenRepository.save(c);
-        return c;
     }
 
     public void deleteByID(Long id){
