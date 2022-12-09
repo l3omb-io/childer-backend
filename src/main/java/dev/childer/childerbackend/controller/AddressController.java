@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/address")
@@ -26,7 +27,7 @@ public class AddressController {
     }
 
     @GetMapping("/{id}")
-    public @ResponseBody ResponseEntity<AddressModel> getOneAddress(@PathVariable Long id){
+    public @ResponseBody ResponseEntity<Optional<AddressModel>> getOneAddress(@PathVariable Long id){
         return new ResponseEntity<>(this.addressService.findAddressByID(id), HttpStatus.OK);
     }
 
@@ -36,7 +37,7 @@ public class AddressController {
     }
 
     @PutMapping("/{id}")
-    public @ResponseBody ResponseEntity<AddressModel> putAddress(@PathVariable Long id,@RequestBody AddressModel address){
+    public @ResponseBody ResponseEntity<Optional<AddressModel>> putAddress(@PathVariable Long id,@RequestBody AddressModel address){
         return new ResponseEntity<>(this.addressService.updateAddress(id,address), HttpStatus.OK);
     }
 
