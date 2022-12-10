@@ -13,25 +13,27 @@ import java.io.Serializable;
 @Table(name = "Book")
 @Data
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer"})
-@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
+@JsonIdentityInfo(scope = BookModel.class,generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class BookModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "Schoolname")
+    @Column(name = "Schoolname", nullable = false)
     private String schoolName;
 
-    @Column(name = "SchoolLocation")
+    @Column(name = "SchoolLocation", nullable = false)
     private String schoolLocation;
 
-    @Column(name = "Affiliation")
+    @Column(name = "Affiliation", nullable = false)
     private String affiliation;
 
-    @Column(name = "SchoolYear")
+    @Column(name = "SchoolYear", nullable = false)
     private int schoolYear;
+
+    @Column(name = "Room" , nullable = false)
+    private int room;
 
     @OneToOne(mappedBy = "book",cascade = CascadeType.ALL)
     private ChildrenModel children;

@@ -40,8 +40,9 @@ public class ChildrenService {
             children.setTel(newChildren.getTel());
             children.setImagePath(newChildren.getImagePath());
             children.setParentName(newChildren.getParentName());
-            children.setBook(newChildren.getBook());
             children.setNickName(newChildren.getNickName());
+            children.setBook(newChildren.getBook());
+            children.setAddress(newChildren.getAddress());
             return childrenRepository.save(children);
         });
 

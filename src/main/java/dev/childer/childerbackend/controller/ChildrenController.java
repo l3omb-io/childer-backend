@@ -34,7 +34,7 @@ public class ChildrenController {
 
     @PostMapping("")
     public @ResponseBody ResponseEntity<ChildrenModel> postChildren(@RequestBody ChildrenModel children){
-        return new ResponseEntity<>(this.childrenService.saveChildren(children),HttpStatus.OK);
+        return new ResponseEntity<>(this.childrenService.saveChildren(children),HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
@@ -45,6 +45,6 @@ public class ChildrenController {
     @DeleteMapping("/{id}")
     public @ResponseBody ResponseEntity<String> deleteChildren(@PathVariable Long id){
         this.childrenService.deleteByID(id);
-        return new ResponseEntity<>(String.format("has delete."),HttpStatus.OK);
+        return new ResponseEntity<>(String.format("%d has delete.",id),HttpStatus.OK);
     }
 }
