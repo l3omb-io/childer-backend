@@ -1,5 +1,6 @@
 package dev.childer.childerbackend.service;
 
+import dev.childer.childerbackend.controller.ImageController;
 import dev.childer.childerbackend.models.ChildrenModel;
 import dev.childer.childerbackend.repositories.ChildrenRepository;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,6 @@ import java.util.Optional;
 public class ChildrenService {
 
     private final ChildrenRepository childrenRepository;
-
 
     public ChildrenService(ChildrenRepository childrenRepository) {
         this.childrenRepository = childrenRepository;
@@ -27,6 +27,7 @@ public class ChildrenService {
     }
 
     public ChildrenModel saveChildren(ChildrenModel children){
+
         return this.childrenRepository.save(children);
     }
 
@@ -38,7 +39,6 @@ public class ChildrenService {
             children.setGrade(newChildren.getGrade());
             children.setIdCard(newChildren.getIdCard());
             children.setTel(newChildren.getTel());
-            children.setImagePath(newChildren.getImagePath());
             children.setParentName(newChildren.getParentName());
             children.setNickName(newChildren.getNickName());
             children.setBook(newChildren.getBook());

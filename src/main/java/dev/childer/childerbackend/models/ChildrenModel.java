@@ -20,9 +20,6 @@ public class ChildrenModel implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "ImagePath", nullable = false)
-    private String imagePath;
-
     @Column(name = "Fname", nullable = false)
     private String fname;
 
@@ -47,6 +44,8 @@ public class ChildrenModel implements Serializable {
     @Column(name = "Tel", nullable = false, length = 10)
     private String tel;
 
+
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(
             name = "IdentityBook",
@@ -62,4 +61,12 @@ public class ChildrenModel implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "address_id")
     )
     private AddressModel address;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "IdentityImage",
+            joinColumns = @JoinColumn(name = "children_id"),
+            inverseJoinColumns = @JoinColumn(name = "image_id")
+    )
+    private ImageModel image;
 }

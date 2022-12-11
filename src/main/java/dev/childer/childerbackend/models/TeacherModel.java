@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @JsonIdentityInfo(scope = ChildrenModel.class,generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
-public class Teacher implements Serializable {
+public class TeacherModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
