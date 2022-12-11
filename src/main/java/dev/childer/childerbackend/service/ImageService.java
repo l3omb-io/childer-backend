@@ -25,7 +25,7 @@ public class ImageService {
                 .imageData(ImageUtils.toObjects(ImageUtils.compressImage(file.getBytes()))).build());
 
         if (imageModel != null){
-            return "File uploaded successfully :" + file.getOriginalFilename();
+            return "http://localhost:8080/image/" + file.getOriginalFilename();
         }
         return null;
     }

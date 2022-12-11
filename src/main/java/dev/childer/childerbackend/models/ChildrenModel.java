@@ -62,11 +62,5 @@ public class ChildrenModel implements Serializable {
     )
     private AddressModel address;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "IdentityImage",
-            joinColumns = @JoinColumn(name = "children_id"),
-            inverseJoinColumns = @JoinColumn(name = "image_id")
-    )
-    private ImageModel image;
+    private String imagePath;
 }

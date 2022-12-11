@@ -27,6 +27,4 @@ public class ImageModel {
     @Column(name = "ImageData")
     private Byte[] imageData;
 
-    @OneToOne(mappedBy = "image",cascade = CascadeType.ALL)
-    private ChildrenModel children;
 }
