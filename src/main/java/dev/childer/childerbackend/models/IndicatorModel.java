@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Table(name = "Indicator")
 @Data
 @NoArgsConstructor
-@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
+@JsonIdentityInfo(scope = IndicatorModel.class,generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class IndicatorModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,4 +22,17 @@ public class IndicatorModel implements Serializable {
     @Column(name = "Title",nullable = false)
     private String title;
 
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "IdentityEvaluationResult",
+            joinColumns = @JoinColumn(name = "indicator_id"),
+            inverseJoinColumns = @JoinColumn(name = "evaluationResult_id")
+    )
+    private EvaluationResultModel evaluationResult;
+
+
+
+    @OneToOne(mappedBy = "indicator",cascade = CascadeType.ALL)
+    private EvaluationModel evaluation;
 }

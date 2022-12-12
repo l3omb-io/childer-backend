@@ -20,5 +20,12 @@ public class EvaluationResultModel implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "Term")
     private Term term;
+
+    @Column(name = "Score")
+    private String score;
+
+//    @OneToOne(mappedBy = "evaluationResult",cascade = CascadeType.ALL)
+//    private IndicatorModel indicator;
 }
