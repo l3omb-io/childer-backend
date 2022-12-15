@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/image")
 public class ImageController {
 
@@ -18,7 +19,7 @@ public class ImageController {
     private ImageService imageService;
 
     @PostMapping("")
-    public ResponseEntity<?> uploadImage(@RequestParam("image")MultipartFile file) throws IOException {
+    public ResponseEntity<?> uploadImage(@RequestPart("image") MultipartFile file) throws IOException {
         String uploadImage = imageService.uploadImage(file);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(uploadImage);

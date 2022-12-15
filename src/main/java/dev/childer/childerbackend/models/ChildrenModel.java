@@ -30,6 +30,12 @@ public class ChildrenModel implements Serializable {
     @Column(name = "Nickname", nullable = false)
     private String nickName;
 
+    @Column(name = "Ethnicity",nullable = false)
+    private String ethnicity;
+
+    @Column(name = "Nationality",nullable = false)
+    private String nationality;
+
     @Column(name = "IDcard", length = 13, nullable = false)
     private String idCard;
 
@@ -39,7 +45,7 @@ public class ChildrenModel implements Serializable {
     @Column(name = "Parentname", nullable = false)
     private String parentName;
 
-    @Column(name = "Grade", nullable = false)
+    @Column(name = "Grade")
     private String grade;
 
     @Column(name = "Tel", nullable = false, length = 10)

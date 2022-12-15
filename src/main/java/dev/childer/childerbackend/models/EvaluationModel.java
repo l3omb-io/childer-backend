@@ -12,14 +12,14 @@ import java.io.Serializable;
 @Table(name = "Evaluation")
 @Data
 @NoArgsConstructor
-@JsonIdentityInfo(scope = EvaluationModel.class,generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
+@JsonIdentityInfo(scope = EvaluationModel.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class EvaluationModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "Topic",nullable = false)
+    @Column(name = "Topic", nullable = false)
     private String topic;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -32,7 +32,7 @@ public class EvaluationModel implements Serializable {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "IdentityChildren",
+            name = "childrenEvaluation",
             joinColumns = @JoinColumn(name = "evaluation_id"),
             inverseJoinColumns = @JoinColumn(name = "children_id")
     )
