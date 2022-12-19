@@ -1,10 +1,14 @@
 package dev.childer.childerbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.io.Serializable;
 
@@ -30,11 +34,7 @@ public class EvaluationModel implements Serializable {
     )
     private IndicatorModel indicator;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "childrenEvaluation",
-            joinColumns = @JoinColumn(name = "evaluation_id"),
-            inverseJoinColumns = @JoinColumn(name = "children_id")
-    )
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "children_id", nullable = false)
     private ChildrenModel children;
 }

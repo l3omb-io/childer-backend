@@ -32,7 +32,7 @@ public class IndicatorService {
         return this.indicatorRepository.findById(id).map(indicator -> {
             indicator.setEvaluation(newIndicator.getEvaluation());
             indicator.setTitle(newIndicator.getTitle());
-//            indicator.setEvaluationResult(newIndicator.getEvaluationResult());
+            indicator.setEvaluationResult(newIndicator.getEvaluationResult());
 
             return this.indicatorRepository.save(indicator);
         });

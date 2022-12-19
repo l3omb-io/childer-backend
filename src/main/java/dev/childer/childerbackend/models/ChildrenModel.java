@@ -1,6 +1,7 @@
 package dev.childer.childerbackend.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -14,7 +15,7 @@ import java.util.Set;
 @Table(name = "Children")
 @Data
 @NoArgsConstructor
-@JsonIdentityInfo(scope = ChildrenModel.class,generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
+@JsonIdentityInfo(scope = ChildrenModel.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class ChildrenModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,10 +31,10 @@ public class ChildrenModel implements Serializable {
     @Column(name = "Nickname", nullable = false)
     private String nickName;
 
-    @Column(name = "Ethnicity",nullable = false)
+    @Column(name = "Ethnicity", nullable = false)
     private String ethnicity;
 
-    @Column(name = "Nationality",nullable = false)
+    @Column(name = "Nationality", nullable = false)
     private String nationality;
 
     @Column(name = "IDcard", length = 13, nullable = false)
@@ -52,7 +53,6 @@ public class ChildrenModel implements Serializable {
     private String tel;
 
 
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(
             name = "IdentityBook",
@@ -68,10 +68,6 @@ public class ChildrenModel implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "address_id")
     )
     private AddressModel address;
-
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "children")
-    private Set<EvaluationModel> evaluation;
 
     private String imagePath;
 
